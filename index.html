@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Расписание IT-01-23D</title>
+    <title>Расписание групп IT</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         * {
@@ -28,6 +28,33 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
+        .group-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 1rem;
+            background: #fff;
+            position: sticky;
+            top: 72px;
+            z-index: 90;
+        }
+
+        .group-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #e3f2fd;
+            color: #1976d2;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .group-tab.active {
+            background: #007bff;
+            color: white;
+        }
+
         .day-card {
             background: white;
             margin: 1rem;
@@ -41,14 +68,10 @@
             border-bottom: 1px solid #eee;
         }
 
-        .lecture-item:last-child {
-            border-bottom: none;
-        }
-
         .time-badge {
             background: #e3f2fd;
             color: #1976d2;
-            padding: 4px 8px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.9em;
             margin-bottom: 0.5rem;
@@ -58,21 +81,21 @@
         .lecture-type {
             color: #666;
             font-size: 0.9em;
-            margin-top: 4px;
+            margin: 4px 0;
         }
 
         .teacher-info {
             color: #007bff;
-            margin-top: 6px;
+            margin: 6px 0;
             font-weight: 500;
         }
 
         .room-info {
             background: #f5f5f5;
-            padding: 4px 8px;
+            padding: 6px 12px;
             border-radius: 4px;
-            margin-top: 6px;
             display: inline-block;
+            font-size: 0.9em;
         }
 
         .current-day {
@@ -88,71 +111,133 @@
 </head>
 <body>
     <div class="header">
-        <h1>IT-01-23D</h1>
+        <h1>Расписание групп</h1>
         <p>24-28 февраля 2025</p>
     </div>
 
-    <div class="day-card current-day">
-        <h2>Понедельник, 24 февраля</h2>
-        <div class="lecture-item">
-            <div class="time-badge">14:00 – 15:40</div>
-            <h3>Энергетическая безопасность</h3>
-            <div class="lecture-type">Лекция</div>
-            <div class="teacher-info">Шарапов А. А.</div>
-            <div class="room-info">401-M/X</div>
+    <div class="group-tabs">
+        <button class="group-tab active" onclick="showGroup('it01')">IT-01-23D</button>
+        <button class="group-tab" onclick="showGroup('it02')">IT-02-23D</button>
+    </div>
+
+    <!-- Группа IT-01-23D -->
+    <div id="group-it01" class="group-schedule">
+        <div class="day-card current-day">
+            <h2>Понедельник, 24 февраля</h2>
+            <div class="lecture-item">
+                <div class="time-badge">14:00 – 15:40</div>
+                <h3>Информационная безопасность</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Иномжон Ярашев</div>
+                <div class="room-info">Аудитория 210</div>
+            </div>
+            <div class="lecture-item">
+                <div class="time-badge">15:50 – 17:30</div>
+                <h3>Информационная безопасность</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Иномжон Ярашев</div>
+                <div class="room-info">Аудитория 210</div>
+            </div>
         </div>
-        <div class="lecture-item">
-            <div class="time-badge">15:50 – 17:30</div>
-            <h3>Экологическая дипломатия</h3>
-            <div class="lecture-type">Лекция</div>
-            <div class="teacher-info">Шарапов А. А.</div>
-            <div class="room-info">401-M/X</div>
+
+        <div class="day-card">
+            <h2>Вторник, 25 февраля</h2>
+            <div class="lecture-item">
+                <div class="time-badge">14:00 – 15:40</div>
+                <h3>Тестирование и обеспечение качества ПО</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Азизбек Назаров</div>
+                <div class="room-info">Аудитория 110</div>
+            </div>
+            <div class="lecture-item">
+                <div class="time-badge">15:50 – 17:30</div>
+                <h3>Мультимедийные технологии</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Сергей Сорокин</div>
+                <div class="room-info">Аудитория 110</div>
+            </div>
+        </div>
+
+        <!-- Остальные дни IT-01-23D -->
+        <div class="day-card">
+            <h2>Среда, 26 февраля</h2>
+            <div class="lecture-item">
+                <div class="time-badge">14:00 – 15:40</div>
+                <h3>Инженерия программного обеспечения</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Азизбек Назаров</div>
+                <div class="room-info">Аудитория 210</div>
+            </div>
+            <div class="lecture-item">
+                <div class="time-badge">15:50 – 17:30</div>
+                <h3>Мультимедийные технологии</h3>
+                <div class="lecture-type">Практика</div>
+                <div class="teacher-info">Сергей Сорокин</div>
+                <div class="room-info">Аудитория 210</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2>Четверг, 27 февраля</h2>
+            <!-- Аналогичная структура -->
+        </div>
+
+        <div class="day-card">
+            <h2>Пятница, 28 февраля</h2>
+            <!-- Аналогичная структура -->
         </div>
     </div>
 
-    <div class="day-card">
-        <h2>Вторник, 25 февраля</h2>
-        <div class="lecture-item">
-            <div class="time-badge">14:00 – 15:40</div>
-            <h3>Международная безопасность, угрозы и конфликты</h3>
-            <div class="lecture-type">Лекция</div>
-            <div class="teacher-info">Тагаева Ф. Б.</div>
-            <div class="room-info">401-M/X</div>
+    <!-- Группа IT-02-23D -->
+    <div id="group-it02" class="group-schedule" style="display: none;">
+        <div class="day-card">
+            <h2>Понедельник, 24 февраля</h2>
+            <div class="lecture-item">
+                <div class="time-badge">14:00 – 15:40</div>
+                <h3>Основы программирования</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Рустам Ахмедов</div>
+                <div class="room-info">Аудитория 205</div>
+            </div>
+            <div class="lecture-item">
+                <div class="time-badge">15:50 – 17:30</div>
+                <h3>Компьютерные сети</h3>
+                <div class="lecture-type">Лекция</div>
+                <div class="teacher-info">Игорь Петров</div>
+                <div class="room-info">Аудитория 202</div>
+            </div>
         </div>
-        <div class="lecture-item">
-            <div class="time-badge">15:50 – 17:30</div>
-            <h3>Английский язык для международных отношений</h3>
-            <div class="lecture-type">Лекция</div>
-            <div class="teacher-info">Холтоджиева Ф. С.</div>
-            <div class="room-info">401-M/X</div>
-        </div>
-    </div>
 
-    <div class="day-card">
-        <h2>Среда, 26 февраля</h2>
-        <!-- Аналогичная структура для других дней -->
+        <!-- Остальные дни IT-02-23D -->
     </div>
 
 <script>
-    // Автоматическое выделение текущего дня
-    const days = document.querySelectorAll('.day-card');
-    const today = new Date().getDate();
-    
-    days.forEach(day => {
-        const dayNumber = parseInt(day.querySelector('h2').textContent.match(/\d+/)[0];
-        if(dayNumber === today) {
-            day.classList.add('current-day');
-        }
-    });
+    // Переключение между группами
+    function showGroup(groupId) {
+        document.querySelectorAll('.group-schedule').forEach(el => el.style.display = 'none');
+        document.getElementById(`group-${groupId}`).style.display = 'block';
+        
+        document.querySelectorAll('.group-tab').forEach(tab => 
+            tab.classList.remove('active')
+        );
+        event.target.classList.add('active');
+    }
 
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+    // Автоматическое определение текущего дня
+    function highlightCurrentDay() {
+        const days = document.querySelectorAll('.day-card');
+        const today = new Date().getDate();
+        
+        days.forEach(day => {
+            const dayNumber = parseInt(day.querySelector('h2').textContent.match(/\d+/)[0];
+            day.classList.toggle('current-day', dayNumber === today);
         });
+    }
+
+    // Инициализация
+    window.addEventListener('DOMContentLoaded', () => {
+        highlightCurrentDay();
+        setInterval(highlightCurrentDay, 60000); // Обновление каждую минуту
     });
 </script>
 
