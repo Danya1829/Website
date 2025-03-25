@@ -3,34 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расписание</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Расписание занятий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #007bff;
+            padding: 20px;
+            height: 100vh;
+            color: white;
+        }
+        .sidebar h2 {
+            margin: 0;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .sidebar button:hover {
+            background-color: #ddd;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        .schedule {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 80%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Расписание занятий</h1>
-    <table>
-        <tr>
-            <th>День</th>
-            <th>Время</th>
-            <th>Предмет</th>
-        </tr>
-        <tr>
-            <td>Понедельник</td>
-            <td>08:00 - 09:30</td>
-            <td>Математика</td>
-        </tr>
-        <tr>
-            <td>Вторник</td>
-            <td>10:00 - 11:30</td>
-            <td>Информатика</td>
-        </tr>
-    </table>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(() => console.log('Service Worker зарегистрирован!'))
-                .catch(error => console.log('Ошибка регистрации Service Worker:', error));
-        }
-    </script>
+
+<div class="sidebar">
+    <h2>Выберите группу</h2>
+    <button onclick="showSchedule('it01')">Расписание IT-01-23D</button>
+    <button onclick="showSchedule('it02')">Расписание IT-02-23D</button>
+</div>
+
+<div class="content">
+    <div class="schedule" id="schedule-it01">
+        <h2>Расписание IT-01-23D</h2>
+        <table>
+            <tr>
+                <th>День недели</th>
+                <th>Пара</th>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Преподаватель</th>
+                <th>Аудитория</th>
+            </tr>
+            <tr><td rowspan="2">Понедельник</td><td>1</td><td>14:00 – 15:40</td><td>Информационная безопасность</td><td>Иномжон Ярашев</td><td>210</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Информационная безопасность</td><td>Иномжон Ярашев</td><td>210</td></tr>
+            <tr><td rowspan="2">Вторник</td><td>1</td><td>14:00 – 15:40</td><td>Тестирование ПО</td><td>Азизбек Назаров</td><td>110</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Мультимедийные технологии</td><td>Сергей Сорокин</td><td>110</td></tr>
+            <tr><td rowspan="2">Среда</td><td>1</td><td>14:00 – 15:40</td><td>Программная инженерия</td><td>Азизбек Назаров</td><td>210</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Мультимедийные технологии</td><td>Сергей Сорокин</td><td>210</td></tr>
+            <tr><td rowspan="2">Четверг</td><td>1</td><td>14:00 – 15:40</td><td>Программная инженерия</td><td>Азизбек Назаров</td><td>210</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Электронная коммерция</td><td>Максина Мансурова</td><td>210</td></tr>
+            <tr><td rowspan="2">Пятница</td><td>1</td><td>14:00 – 15:40</td><td>Электронная коммерция</td><td>Максина Мансурова</td><td>210</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Тестирование ПО</td><td>Азизбек Назаров</td><td>210</td></tr>
+        </table>
+    </div>
+
+    <div class="schedule" id="schedule-it02" style="display: none;">
+        <h2>Расписание IT-02-23D</h2>
+        <table>
+            <tr>
+                <th>День недели</th>
+                <th>Пара</th>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Преподаватель</th>
+                <th>Аудитория</th>
+            </tr>
+            <tr><td rowspan="2">Понедельник</td><td>1</td><td>14:00 – 15:40</td><td>Основы программирования</td><td>Рустам Ахмедов</td><td>205</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Компьютерные сети</td><td>Игорь Петров</td><td>202</td></tr>
+            <tr><td rowspan="2">Вторник</td><td>1</td><td>14:00 – 15:40</td><td>Алгоритмы и структуры данных</td><td>Владимир Иванов</td><td>110</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Базы данных</td><td>Марина Смирнова</td><td>303</td></tr>
+            <tr><td rowspan="2">Среда</td><td>1</td><td>14:00 – 15:40</td><td>Операционные системы</td><td>Дмитрий Коваленко</td><td>201</td></tr>
+            <tr><td>2</td><td>15:50 – 17:30</td><td>Разработка веб-приложений</td><td>Анна Васильева</td><td>108</td></tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showSchedule(group) {
+        document.getElementById('schedule-it01').style.display = group === 'it01' ? 'block' : 'none';
+        document.getElementById('schedule-it02').style.display = group === 'it02' ? 'block' : 'none';
+    }
+</script>
+
 </body>
 </html>
